@@ -1,0 +1,20 @@
+FROM ubuntu:16.04
+COPY *.a /usr/local/lib/
+COPY hpl-2.3/ /root/hpl-2.3/
+COPY mpich-3.2.1.tar.gz /root/
+COPY sources.list /etc/apt/
+RUN cd /root/ \
+ && tar xzf mpich-3.2.1.tar.gz \
+ && cd /root/mpich-3.2.1 \
+ && apt-get update \
+ && buildDeps='gcc gfortran g++ make' \
+ && apt-get install -y --no-install-recommends $buildDeps \
+ && ./configure --prefix=/usr/local \
+ && make \
+ && make install \
+ && export PATH=/usr/local/bin:$PATH \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm /root/mpich-3.2.1.tar.gz \
+ && apt-get purge -y --auto-remove g++ make
+
+# cd ~/hpl-2.3/bin/Linux_PII_CBLAS && mpirun -np 4 ./xhpl > HPL-Benchmark.txt
