@@ -1,6 +1,6 @@
 # x8664-linpack-hpl
-Dockerfile of linpack-hpl，dockerhub：https://hub.docker.com/r/vae2019/x8664-linpack-hpl
-## Build Refer
+在x86下linpack-hpl测试环境的Dockerfile文件，dockerhub地址：https://hub.docker.com/r/vae2019/x8664-linpack-hpl
+## dockerfile构建的参考
 https://www.cnblogs.com/zhyantao/p/10614238.html
-## PS
-If you want change test config ,firstly, refer https://github.com/levinit/itnotes/wiki/high-performance-linpack(hpl)-benchmark and change HPL.dat depend on your hardware. Then , replace the .dat file in docker image which is located in /root/.
+## 说明
+如果需要修改测试参数，可以参考[这篇文章](https://github.com/levinit/itnotes/wiki/high-performance-linpack(hpl)-benchmark)，根据自己的硬件情况修改HPL.dat文件。然后替换镜像home目录下的dat文件。
